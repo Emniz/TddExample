@@ -52,13 +52,13 @@ namespace Task2
                 }
             }
         }
-        public void Random()
+        public void InitRandom()
         {
             Random rand = new Random();
             for (int i = 0; i < Size; i++)
                 indexes[i] = rand.Next(1,100);
         }
-        public void MassArr(double value)
+        public void InitMass(double value)
         {
             for (int i = 0; i < Size; i++)
                 indexes[i] = value;
@@ -78,7 +78,13 @@ namespace Task2
                 else throw new IndexOutOfRangeException();
             }
         }
-
+        public bool IsNull()
+        {
+            for (int i = 0; i < Size; i++)
+                if (this[i] != 0)
+                    return false;
+            return true;
+        }
         public static LinearEquation operator +(LinearEquation a, LinearEquation b)
         {
             var result = a.indexes.Zip(b.indexes, (first, second) => first + second);
@@ -151,13 +157,7 @@ namespace Task2
                     return false;
             return true;
         }
-        public bool IsNull()
-        {
-            for (int i = 0; i < Size; i++)
-                if (this[i] != 0)
-                    return false;
-            return true;
-        }
+   
         public void CopyTo(LinearEquation a)
         {
             a.indexes = indexes.ToList();

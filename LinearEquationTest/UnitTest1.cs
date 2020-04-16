@@ -86,7 +86,7 @@ namespace LinearEquationTest
         public void Mass()
         {
             LinearEquation a = new LinearEquation(4);
-            a.MassArr(1.2);
+            a.InitMass(1.2);
             string res = "1,2,3,4,5";
             Assert.AreEqual(new LinearEquation(res), a);
         }
