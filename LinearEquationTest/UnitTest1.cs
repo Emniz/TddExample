@@ -9,7 +9,7 @@ namespace LinearEquationTest
     public class UnitTest1
     {
         [TestMethod]
-        public void Array()
+        public void InitArray()
         {
             const int n = 5;
             double[] coeff = new double[n] { 1, 2, 3, 4, 5 };
@@ -18,7 +18,7 @@ namespace LinearEquationTest
         }
 
         [TestMethod]
-        public void List()
+        public void InitList()
         {
             List<double> coeff = new List<double>() { 1, 2, 3, 4, 5 };
             LinearEquation a1 = new LinearEquation(coeff);
@@ -26,7 +26,7 @@ namespace LinearEquationTest
         }
 
         [TestMethod]
-        public void IndexEl()
+        public void InitString()
         {
             string coeff = "1,2,3,4,5,6,7";
             LinearEquation a1 = new LinearEquation(coeff);
@@ -34,7 +34,7 @@ namespace LinearEquationTest
         }
 
         [TestMethod]
-        public void Sum()
+        public void CorrectSum()
         {
             string coeff1 = "1,3,5,7,9,12,15";
             LinearEquation a1 = new LinearEquation(coeff1);
@@ -45,7 +45,7 @@ namespace LinearEquationTest
         }
 
         [TestMethod]
-        public void Sub()
+        public void CorrectSub()
         {
             string coeff1 = "2,3,4,5,6";
             LinearEquation a1 = new LinearEquation(coeff1);
@@ -56,7 +56,7 @@ namespace LinearEquationTest
         }
 
         [TestMethod]
-        public void Mul1()
+        public void CorrectMul1()
         {
             string coeff = "1,2,3,4,5";
             LinearEquation a = new LinearEquation(coeff);
@@ -65,7 +65,7 @@ namespace LinearEquationTest
         }
 
         [TestMethod]
-        public void Mul2()
+        public void CorrectMul2()
         {
             string coeff = "1,2,3,4,5";
             LinearEquation a = new LinearEquation(coeff);
@@ -74,7 +74,7 @@ namespace LinearEquationTest
         }
    
         [TestMethod]
-        public void Minus()
+        public void CorrectMinus()
         {
             string coeff = "1,3,5,7,9";
             LinearEquation a = new LinearEquation(coeff);
@@ -83,7 +83,7 @@ namespace LinearEquationTest
         }
 
         [TestMethod]
-        public void Mass()
+        public void CorrectInitMass()
         {
             LinearEquation a = new LinearEquation(4);
             a.InitMass(1.2);
@@ -100,7 +100,7 @@ namespace LinearEquationTest
         }
 
         [TestMethod]
-        public void Index()
+        public void CorrectIndex()
         {
             string coeff = "1,2,3,7,8";
             LinearEquation a = new LinearEquation(coeff);
@@ -127,7 +127,7 @@ namespace LinearEquationTest
 
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void BigIndex1()
+        public void FailIndex1()
         {
             string coeff = "1,2,3,5,6";
             LinearEquation a = new LinearEquation(coeff);
@@ -136,7 +136,7 @@ namespace LinearEquationTest
 
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void MinusIndex2()
+        public void FailIndex2()
         {
             string coeff = "1,2,3,5,6";
             LinearEquation a = new LinearEquation(coeff);
@@ -145,7 +145,7 @@ namespace LinearEquationTest
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void Argument()
+        public void FailArgument()
         {
             Assert.Equals(typeof(ArgumentException), new LinearEquation(-50));
         }

@@ -27,7 +27,7 @@ namespace SystemOfLinearEquationTest
             Assert.AreEqual(true, check);
         }
         [TestMethod]
-        public void IndexLine()
+        public void CorrectIndexLine()
         {
             int n = 3;
             SystemOfLinearEquation s = new SystemOfLinearEquation(n);
@@ -36,21 +36,10 @@ namespace SystemOfLinearEquationTest
             s.Add(new LinearEquation("4,-1,1,5"));
             Assert.AreEqual(new LinearEquation("1,-2,1,0"), s[0]);
         }
-        [TestMethod]
-        [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void MinusIndex()
-        {
-            int n = 3;
-            SystemOfLinearEquation s = new SystemOfLinearEquation(n);
-            s.Add(new LinearEquation("1,-2,1,0"));
-            s.Add(new LinearEquation("2,2,-1,3"));
-            s.Add(new LinearEquation("4,-1,1,5"));
-            Assert.Equals(typeof(IndexOutOfRangeException), s[-5]);
-        }
 
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void BigIndex()
+        public void FailWithIndexing1()
         {
             int n = 3;
             SystemOfLinearEquation s = new SystemOfLinearEquation(n);
@@ -58,6 +47,18 @@ namespace SystemOfLinearEquationTest
             s.Add(new LinearEquation("2,2,-1,3"));
             s.Add(new LinearEquation("4,-1,1,5"));
             Assert.Equals(typeof(IndexOutOfRangeException), s[18]);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void FailWithIndexing2()
+        {
+            int n = 3;
+            SystemOfLinearEquation s = new SystemOfLinearEquation(n);
+            s.Add(new LinearEquation("1,-2,1,0"));
+            s.Add(new LinearEquation("2,2,-1,3"));
+            s.Add(new LinearEquation("4,-1,1,5"));
+            Assert.Equals(typeof(IndexOutOfRangeException), s[-5]);
         }
 
         [TestMethod]
