@@ -2,12 +2,12 @@
 #include<stdexcept>
 #include<exception>
 
-Indexer::Indexer(double* array, int arrLength, int begin, int length)
+Indexer::Indexer(double* array, int arrayLength, int first, int length)
 {
-	if (CheckArg(arrLength, begin, length))
+	if (CheckArg(arrayLength, first, length))
 	{
 		this->array = array;
-		this->first = begin;
+		this->first = first;
 		this->length = length;
 	}
 	else throw std::invalid_argument("ArgumentException");
@@ -20,9 +20,9 @@ double& Indexer::operator[](int index)
 	else throw std::invalid_argument("IndexOutOfRangeException");
 }
 
-bool Indexer::CheckArg(int arrLength, int first, int length)
+bool Indexer::CheckArg(int arrayLength, int first, int length)
 {
-	if (first < 0 || length <= 0 || (first + length) > arrLength)
+	if (first < 0 || length <= 0 || (first + length) > arrayLength)
 		return false;
 	else
 		return true;
