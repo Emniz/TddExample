@@ -39,11 +39,11 @@ namespace Task2
         {
             indexes = new List<double>(cf);
         }
-        public LinearEquation(string coeff)
+        public LinearEquation(string _coeff)
         {
-            string[] cf = Regex.Split(coeff, @"[^\d.-]");
+            string[] cf = Regex.Split(_coeff, @"[^\d.-]");
             indexes = new List<double>();
-            for (int i = 0; i < coeff.Length; i++)
+            for (int i = 0; i < cf.Length; i++)
             {
                 if (cf[i] != "")
                 {

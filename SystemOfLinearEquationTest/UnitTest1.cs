@@ -12,11 +12,11 @@ namespace SystemOfLinearEquationTest
         {
             int n = 3;
             SystemOfLinearEquation s = new SystemOfLinearEquation(n);
-            s.Add(new LinearEquation("1.0,-2.0,1.0,0.0"));
-            s.Add(new LinearEquation("2.0,2.0,-1.0,3.0"));
-            s.Add(new LinearEquation("4.0,-1,1.0,5.0"));
+            s.Add(new LinearEquation("3.0, 2.0,-4.0, 3.0"));
+            s.Add(new LinearEquation("2.0, 3.0, 3.0, 15.0"));
+            s.Add(new LinearEquation("5.0, -3, 1.0, 14.0"));
             s.Shiftg();
-            double[] res1 = new double[] { 2, 1, 3 };
+            double[] res1 = new double[] { 3, 1, 2 };
             double[] res2 = s.System();
             bool check = true;
             for (int i = 0; i < n; i++)

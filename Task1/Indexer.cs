@@ -23,7 +23,7 @@ namespace Task1
         }
         public bool CheckArg(int arrayLength, int first, int length)
         {
-            if (first < 0 || length <= 0 || array.Length < first + length)
+            if (first < 0 || length < 0 || (first + length) > arrayLength)
                 return false;
             else
                 return true;

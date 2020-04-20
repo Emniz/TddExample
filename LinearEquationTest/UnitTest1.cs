@@ -47,11 +47,11 @@ namespace LinearEquationTest
         [TestMethod]
         public void CorrectSub()
         {
-            string coeff1 = "2,3,4,5,6";
+            string coeff1 = "1,2,3,4,5";
             LinearEquation a1 = new LinearEquation(coeff1);
-            string coeff2 = "1,2,3,4,5";
+            string coeff2 = "2,3,4,5,6";
             LinearEquation a2 = new LinearEquation(coeff2);
-            string res = "1,1,1,1.1,1";
+            string res = "-1,-1,-1,-1,-1";
             Assert.AreEqual(new LinearEquation(res), a1 - a2);
         }
 
@@ -86,8 +86,8 @@ namespace LinearEquationTest
         public void CorrectInitMass()
         {
             LinearEquation a = new LinearEquation(4);
-            a.InitMass(1.2);
-            string res = "1,2,3,4,5";
+            a.InitMass(1);
+            string res = "1,1,1,1,1";
             Assert.AreEqual(new LinearEquation(res), a);
         }
 
@@ -110,7 +110,7 @@ namespace LinearEquationTest
         [TestMethod]
         public void BadEquation()
         {
-            string res = "1.2,0,0,0";
+            string res = "0,0,0,2.2";
             LinearEquation a = new LinearEquation(res);
             bool check = (a) ? true : false;
             Assert.AreEqual(false, check);
