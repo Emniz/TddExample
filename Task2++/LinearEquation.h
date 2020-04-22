@@ -2,19 +2,19 @@
 #include<vector>
 #include<string>
 #include<list>
-using namespace std;
+
 class LinearEquation
 {
 private:
-	vector<double> coefficients;
-	vector<string> resplit(const string&, string);
-public:
+	std::vector<double> coefficients;
+	std::vector<std::string> resplit(const std::string&, std::string);
 
-	LinearEquation(string coeff);
-	LinearEquation(list<double>);
-	LinearEquation(vector<double>);
+public:
+	LinearEquation(std::string coeff);
+	LinearEquation(std::list<double>);
+	LinearEquation(std::vector<double>);
 	LinearEquation(int n);
-	~LinearEquation() { vector<double>().swap(coefficients); };
+	~LinearEquation() { std::vector<double>().swap(coefficients); };
 	int size() { return coefficients.size(); }
 	void randomInit();
 	void MassInit(double);
@@ -23,11 +23,12 @@ public:
 	LinearEquation operator+(LinearEquation&);
 	LinearEquation operator-(LinearEquation&);
 	LinearEquation operator-();
-	operator string();
+	operator std::string();
 	operator bool();
+	operator std::list<double>();
 	LinearEquation operator*(const double&);
-	operator list<double>();
 	friend LinearEquation operator*(double, LinearEquation&);
 };
+
 bool operator==(LinearEquation&, LinearEquation&);
 bool operator!=(LinearEquation&, LinearEquation&);

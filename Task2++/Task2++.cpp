@@ -7,9 +7,10 @@ using namespace std;
 
 int main()
 {	
-	int n = 3;
+	
 	srand(time(NULL));
-	SystemLinearEquation s(n);
+	int n = 3;
+	SystemOfLinearEquation s(n);
 	LinearEquation a1(3);
 	LinearEquation a2(3);
 	LinearEquation a3(3);
@@ -22,7 +23,7 @@ int main()
 	cout << (string)s << endl;
 	s.shiftg();
 	cout << (string)s << endl;
-	vector<double> ans = s.System();
-	for (int i = 0; i < ans.size(); i++)
-		cout << ans[i] << "   ";
+	vector<double> solve = s.System();
+	for (int i = 0; i < solve.size(); i++)
+		cout << solve[i] << "   ";
 }

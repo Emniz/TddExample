@@ -1,20 +1,32 @@
 #include "SystemOfLinearEquation.h"
 #include<stdexcept>
 
-int SystemLinearEquation::size()
-{
-	return system.size();
-}
 
-LinearEquation& SystemLinearEquation::operator[](int index)
+LinearEquation& SystemOfLinearEquation::operator[](int index)
 {
 	if (index >= 0 && index < system.size())
 		return system[index];
 	else throw std::out_of_range("Out of range!");
 }
 
+int SystemOfLinearEquation::size()
+{
+	return system.size();
+}
 
-void SystemLinearEquation::shiftg()
+void SystemOfLinearEquation::add(LinearEquation& a)
+{
+	if (a.size() == n + 1)
+		system.push_back(a);
+	else throw std::invalid_argument("Invalid argument!");
+}
+
+void SystemOfLinearEquation::remove()
+{
+	system.pop_back();
+}
+
+void SystemOfLinearEquation::shiftg()
 {
 	int c, z;
 	for (int i = 0; i < size(); i++)
@@ -26,10 +38,8 @@ void SystemLinearEquation::shiftg()
 			c = 1;
 			while ((i + c) < size() && system[i + c][z] == 0) c++;
 			if ((i + c) == size())
-			{
 				return;
-			}
-			swap(system[i], system[i + c]);
+			std::swap(system[i], system[i + c]);
 		}
 		for (int j = i + 1; j < size(); j++)
 		{
@@ -39,17 +49,8 @@ void SystemLinearEquation::shiftg()
 		}
 	}
 }
-void SystemLinearEquation::add(LinearEquation& a)
-{
-	if (a.size() == n + 1)
-		system.push_back(a);
-	else throw std::invalid_argument("Invalid argument!");
-}
-void SystemLinearEquation::remove()
-{
-	system.pop_back();
-}
-vector<double> SystemLinearEquation::System()
+
+std::vector<double> SystemOfLinearEquation::System()
 {
 	while (system[size() - 1].isNull())
 		system.pop_back();
@@ -57,14 +58,12 @@ vector<double> SystemLinearEquation::System()
 	{
 		if (size() == n)
 		{
-			vector<double> solve(n);
+			std::vector<double> solve(n);
 			for (int i = size() - 1; i >= 0; i--)
 			{
 				solve[i] = system[i][n];
 				for (int j = i + 1; j < n; j++)
-				{
 					solve[i] -= system[i][j] * solve[j];
-				}
 				solve[i] /= system[i][i];
 			}
 			return solve;
@@ -73,10 +72,11 @@ vector<double> SystemLinearEquation::System()
 	}
 	else throw std::invalid_argument("The system has no solutions!");
 }
-SystemLinearEquation::operator std::string()
+
+SystemOfLinearEquation::operator std::string()
 {
-	string res = "";
+	std::string res = "";
 	for (int i = 0; i < size(); i++)
-		res += (string)system[i] + '\n';
+		res += (std::string)system[i] + '\n';
 	return res;
 }

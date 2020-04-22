@@ -83,7 +83,7 @@ namespace LinearEquationTestC
 
 		TEST_METHOD(CheckContradictoryEquation)
 		{
-			LinearEquation a("1.2,0,0,0");
+			LinearEquation a("0,0,0,1");
 			bool check = (a) ? true : false;
 			Assert::AreEqual(false, check);
 		}
@@ -98,8 +98,8 @@ namespace LinearEquationTestC
 
 		TEST_METHOD(CopyToList)
 		{
-			LinearEquation a("1,1,0,-4");
-			std::list<double> tmp = a;
+			LinearEquation a("0,2,0,-4");
+			list<double> tmp = a;
 			Assert::AreEqual(0.0, tmp.front());
 		}
 

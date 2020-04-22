@@ -1,20 +1,20 @@
 #pragma once
 #include"LinearEquation.h"
 #include<string>
-class SystemLinearEquation
+
+class SystemOfLinearEquation
 {
 private:
-	vector<LinearEquation> system;
+	std::vector<LinearEquation> system;
 	int n;
 public:
-	SystemLinearEquation(int _n) :n(_n) {}
-	~SystemLinearEquation() { 
-		vector<LinearEquation>().swap(system);}
+	SystemOfLinearEquation(int _n) :n(_n) {}
+	~SystemOfLinearEquation() { std::vector<LinearEquation>().swap(system); }
 	LinearEquation& operator[] (int index);
 	int size();
-	void shiftg();
 	void add(LinearEquation&);
 	void remove();
-	vector<double> System();
+	void shiftg();
+	std::vector<double> System();
 	operator std::string();
 };
